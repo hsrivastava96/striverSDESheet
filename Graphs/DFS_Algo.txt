@@ -1,0 +1,3 @@
+    DFS Algo:
+    Step 1: Visit the currentNode
+    Step 2: Get non visited neighbor and send it to Step 1, if no non-visited neighbor is there then return

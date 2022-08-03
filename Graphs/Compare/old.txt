@@ -1,0 +1,42 @@
+class Solution {
+public:
+    
+    bool dfs(int currNode, vector<bool> &vis, vector<bool> &dfsVis, vector<int> adj[])
+    {
+        vis[currNode] = true;
+        dfsVis[currNode] = true;
+        for(auto neighbor:adj[currNode])
+        {
+            if(!vis[neighbor])
+            {
+                if(dfs(neighbor, vis, dfsVis, adj))
+                    return true;
+            }
+            else if(dfsVis[neighbor])
+                return true;
+        }
+        dfsVis[currNode] = false;
+        return false;
+    }
+    
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) 
+    {
+        vector<int> adj[numCourses];
+        vector<int> ds;
+        vector<bool> vis(numCourses+1, 0);
+        vector<bool> dfsVis(numCourses+1, 0);
+        
+        for(auto it:prerequisites)
+            adj[it[0]].push_back(it[1]);
+        
+        for(int i = 0; i < numCourses; i++)
+        {
+            if(!vis[i])
+            {
+                if(dfs(i, vis, dfsVis, adj))
+                    return false;
+            }
+        }
+        return true;
+    }
+};

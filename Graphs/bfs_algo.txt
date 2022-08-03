@@ -1,0 +1,6 @@
+BFS Algo:
+Step 1: Visit and push currentNode on to the queue
+Step 2: Check if queue is empty or not, if not empty move to step 3 otherwise go to step 5
+Step 3: Pop queue, store poppedNode's data in bfs o/p ds
+Step 4: visit and push all non visited neighbors of poppedNode into the queue and go to step 2
+Step 5: Print bfs ds
